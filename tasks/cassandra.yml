@@ -1,0 +1,8 @@
+- name: install cassandra
+  apt: name=cassandra state=present update_cache=yes force=yes cache_valid_time=3600
+
+- name: override cassandra.yaml file
+  template: src=cassandra.yaml dest=/etc/cassandra/
+
+- name: make sure cassandra is started
+  service: name=cassandra state=restarted

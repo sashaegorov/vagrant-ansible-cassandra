@@ -1,0 +1,3 @@
+cassandra_key_server: hkp://pgp.mit.edu:80
+cluster_name: 'Test Cluster'
+seeds: '192.168.56.11,192.168.56.12'
