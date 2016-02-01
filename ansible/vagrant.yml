@@ -4,6 +4,6 @@
   become: True
   tasks:
   - include_vars: vars/vagrant.yml
-  - include: tasks/dependencies.yml
   - include: tasks/repositories.yml
+  - include: tasks/dependencies.yml
   - include: tasks/cassandra.yml

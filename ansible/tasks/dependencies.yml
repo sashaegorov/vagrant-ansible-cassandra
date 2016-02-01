@@ -1,2 +1,8 @@
-- name: install java
-  apt: name=openjdk-7-jre-headless state=latest update_cache=yes cache_valid_time=3600
+- name: preparing for java installation
+  shell: /bin/echo debconf shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
+
+- name: installing oracle java
+  apt: name=oracle-java8-installer state=latest
+
+- name: setting oracle java as default
+  apt: name=oracle-java8-set-default state=latest

@@ -1,14 +1,17 @@
 - name: add cassandra debian repository
   apt_repository: repo='deb http://www.apache.org/dist/cassandra/debian 21x main' state=present
 
-- name: updating machine
-  apt: update_cache=yes cache_valid_time=3600
-
 - name: add the key for the cassandra debian repo
   apt_key: keyserver={{ cassandra_key_server }} id=F758CE318D77295D
 
-- name: add the other key for cassandra
+- name: add the 2B5C1B00 key for cassandra
   apt_key: keyserver={{ cassandra_key_server }} id=2B5C1B00
 
-- name: add the third key for cassandra
+- name: add the 0353B12C key for cassandra
   apt_key: keyserver={{ cassandra_key_server }} id=0353B12C
+
+- name: add oracle jdk repository
+  apt_repository: repo='ppa:webupd8team/java'
+
+- name: updating machine
+  apt: update_cache=yes

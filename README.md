@@ -24,7 +24,7 @@ Nodes will be running on: ```192.168.56.11``` and ```192.168.56.12```
 
 # TODO
 
-- Move to Oracle JDK as recommended in logs
+- ~~Move to Oracle JDK as recommended in logs~~
 
 # Credits
 
