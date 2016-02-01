@@ -1,5 +1,2 @@
-- name: install curl
-  apt: name=curl state=present update_cache=yes cache_valid_time=3600
-
 - name: install java
-  apt: name=openjdk-7-jre state=present update_cache=yes cache_valid_time=3600
+  apt: name=openjdk-7-jre-headless state=latest update_cache=yes cache_valid_time=3600
