@@ -9,8 +9,8 @@ Vagrant.configure("2") do |config|
       machine.vm.network 'private_network', ip: "192.168.56.#{10+machine_id}"
       machine.vm.provision :ansible do |ansible|
         ansible.limit = 'all'
-        # ansible.verbose = true # More information during provision
-        ansible.playbook = 'vagrant.yml'
+        ansible.verbose = true # More information during provision
+        ansible.playbook = 'ansible/vagrant.yml'
         config.vm.provider 'virtualbox' do |vb|
           vb.customize ['modifyvm', :id, '--memory', MEMORY]
         end
