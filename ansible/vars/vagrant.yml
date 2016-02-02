@@ -2,6 +2,6 @@
 # Note scheme i.e. 'hkp://' and port added to bypass firewall.
 cassandra_key_server: hkp://pgp.mit.edu:80
 cluster_name: 'Test Cluster'
-seeds: '192.168.56.11,192.168.56.12'
+seeds: '192.168.56.11,192.168.56.12,192.168.56.13'
 # Controls whether traffic between nodes is compressed.
 internode_compression: dc

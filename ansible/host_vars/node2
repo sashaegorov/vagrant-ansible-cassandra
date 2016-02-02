@@ -1,2 +1,2 @@
 listen_address: 192.168.56.12
-rpc_address: "{{ listen_address }}"
+rpc_address: 192.168.56.12
