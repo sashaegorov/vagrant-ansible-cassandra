@@ -7,5 +7,5 @@
 - name: make sure cassandra is enabled
   service: name=cassandra enabled=yes
 
-- name: make sure cassandra is started
-  service: name=cassandra state=running
+- name: make sure cassandra is restarted
+  service: name=cassandra state=restarted
