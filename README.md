@@ -4,7 +4,7 @@ Easily provision Cassandra cluster using Ansible with Vagrant & Virtualbox.
 
 ## Prerequisites
 
-* [Virtualbox](https://www.virtualbox.org/) and [Vagrant](https://www.vagrantup.com/downloads) v.1.8
+* Versions of [Virtualbox](https://www.virtualbox.org/) v.5.0.14 and [Vagrant](https://www.vagrantup.com/downloads) v.1.8.1 are known to work
 * [Ansible](http://docs.ansible.com/intro_installation.html) installed on host
 
 ## Provisioning
@@ -27,8 +27,24 @@ Nodes will be running on: `192.168.56.1X`.
 
 Connect to any node and perform the following `nodetool status`.
 
+# Known issues
+
+- **Sometime after provision finishes, `nodetool status` shows no nodes.** Check Cassandra service status on each node `sudo service cassandra status` and restart it sudo `service cassandra restart`. After restart node should join cluster. In some cases `vagrant reload` also works.
+- **Nothing happens.** This configuration runs several nodes' VMs first and than  provisioner VM. In case if there is no sufficient amount of memory on machine, it will start only one or two. Check VMs status via `vagrant status` and reduce amount of nodes.
+- **On Windows Vagrant version 1.8.1 has a bug** which prevents correct folder mapping. Make sure latest Virtualbox version is installed.
+In order to temporary fix that, apply
+- **On Windows hosts connection timeout occures**. Enable GUI and check.
+
+# Node count
+
+In order to update node number follow this checklist:
+- Add them to `ansible/vagrant_inventory` file which responsible for SSH-access
+- Edit them to `ansible/vagrant.yml` playbook
+- Add new file to `ansible/host_vars`
+
 # TODO
 
+- Generate some file programmatically e.g. `vagrant_inventory`
 - Remove workaround for Ansible v.2.0
 - ~~Move to Oracle JDK as recommended in logs~~
 
