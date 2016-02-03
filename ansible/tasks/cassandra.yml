@@ -2,7 +2,7 @@
   apt: name=cassandra state=latest
 
 - name: override cassandra.yaml file
-  template: src=cassandra.yaml dest=/etc/cassandra/
+  template: src=cassandra.yaml backup=yes dest=/etc/cassandra/
 
 - name: make sure cassandra is enabled
   service: name=cassandra enabled=yes
