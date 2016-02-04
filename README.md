@@ -1,17 +1,17 @@
 # Introduction
 
-Easily provision Cassandra cluster using Ansible with Vagrant & Virtualbox.
+Easily provision Cassandra 2 cluster using Ansible with Vagrant & Virtualbox.
 
 ## Prerequisites
 
-* Versions of [Virtualbox](https://www.virtualbox.org/) v.5.0.14 and [Vagrant](https://www.vagrantup.com/downloads) v.1.8.1 are known to work
+* Versions of [Virtualbox](https://www.virtualbox.org/) _v.5.0.14_ and [Vagrant](https://www.vagrantup.com/downloads) _v.1.8.1_ are known to work
 * [Ansible](http://docs.ansible.com/intro_installation.html) installed on host
 
 ## Provisioning
 
 Clone the project and run `vagrant up --parallel` in project directory.
 
-Your cluster will be ready shortly depending on your internet connection. The initial boot takes some time as Ansible has to download, install and configure Cassandra on each node. Subsequent reboots are fast.
+Your cluster will be ready ~~shortly~~ in some time, depending on your Internet connection. The initial boot takes some time as Ansible has to download, install and configure Cassandra on each node. Subsequent reboots are fast.
 
 Nodes will be running on: `192.168.56.1X`.
 
@@ -25,15 +25,14 @@ Nodes will be running on: `192.168.56.1X`.
 
 ## Check Cassandra
 
-Connect to any node and perform the following `nodetool status`.
+- Connect to any node and perform the following `nodetool status`.
 
 # Known issues
 
 - **Sometime after provision finishes, `nodetool status` shows no nodes.** Check Cassandra service status on each node `sudo service cassandra status` and restart it sudo `service cassandra restart`. After restart node should join cluster. In some cases `vagrant reload` also works.
-- **Nothing happens.** This configuration runs several nodes' VMs first and than  provisioner VM. In case if there is no sufficient amount of memory on machine, it will start only one or two. Check VMs status via `vagrant status` and reduce amount of nodes.
+- **Nothing happens.** This configuration runs nodes VMs first and than  provisioner VM. In case if there is no sufficient amount of memory on machine, it will start only one or two. Check VMs status via `vagrant status` and reduce amount of nodes.
 - **On Windows Vagrant version 1.8.1 has a bug** which prevents correct folder mapping. Make sure latest Virtualbox version is installed.
-In order to temporary fix that, apply
-- **On Windows hosts connection timeout occures**. Enable GUI and check.
+- **On Windows hosts connection timeout occures**. Enable GUI and check what's happening.
 
 # Node count
 
@@ -45,8 +44,8 @@ In order to update node number follow this checklist:
 # TODO
 
 - Generate some file programmatically e.g. `vagrant_inventory`
-- Remove workaround for Ansible v.2.0
-- ~~Move to Oracle JDK as recommended in logs~~
+- Remove workaround for Ansible v.2.0 in future
+- ~~Move to Oracle JDK as recommended in Cassandra logs~~
 
 # Credits
 
